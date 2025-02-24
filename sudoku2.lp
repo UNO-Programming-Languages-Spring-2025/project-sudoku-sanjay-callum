@@ -4,13 +4,15 @@
 % For subgrid of size n, subgrids can be identified by labels 1..n*n
 % A cell (x,y) can be mapped to the subgrid labeled 1+(((x-1)/n)*n+(y-1)/n)
 
-row(1..4).
-column(1..4).
-value(1..4).
-subgrid(1..4).
+row(1..9).
+column(1..9).
+value(1..9).
+subgrid(1..9).
 
 % Assign subgrid G to each cell matching given formula
-subgrid(X,Y,G) :- row(X), column(Y), subgrid(G), G = (1+(((X-1)/2)*2+(Y-1)/2)).
+% Adjusted the numbers for the 9x9 sudokus. 
+subgrid(X,Y,G) :- row(X), column(Y), subgrid(G), G = (1+(((X-1)/3)*3+(Y-1)/3)).
+
 
 sudoku(X,Y,N) :- initial(X,Y,N). % Defining all given values
 
