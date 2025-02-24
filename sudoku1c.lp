@@ -17,6 +17,7 @@ sudoku(X,Y,N) :- initial(X,Y,N). % Defining all given values
 { sudoku(X,Y,N) : value(N) } = 1 :- row(X), column(Y).  % Assign 1 value per cell if within 1..4
 :- sudoku(X,Y1,N), sudoku(X,Y2,N), Y1 != Y2.            % Exclude duplicate values in rows
 :- sudoku(X1,Y,N), sudoku(X2,Y,N), X1 != X2.            % Exclude duplicate values in columns
+:- sudoku(X1,Y1,N), sudoku(X2,Y2,N), X1 != X2, Y1 != Y2, subgrid(X1,Y1,G), subgrid(X2,Y2,G).
+% Exclude Duplicate values from subgrids.
 
-#show subgrid/3.
 #show sudoku/3.
