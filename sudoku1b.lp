@@ -7,6 +7,10 @@
 row(1..4).
 column(1..4).
 value(1..4).
+subgrid(1..4).
+
+% Assign subgrid G to each cell matching given formula
+subgrid(X,Y,G) :- row(X), column(Y), subgrid(G), G = (1+(((X-1)/2)*2+(Y-1)/2)).
 
 sudoku(X,Y,N) :- initial(X,Y,N). % Defining all given values
 
@@ -14,4 +18,5 @@ sudoku(X,Y,N) :- initial(X,Y,N). % Defining all given values
 :- sudoku(X,Y1,N), sudoku(X,Y2,N), Y1 != Y2.            % Exclude duplicate values in rows
 :- sudoku(X1,Y,N), sudoku(X2,Y,N), X1 != X2.            % Exclude duplicate values in columns
 
+#show subgrid/3.
 #show sudoku/3.
